@@ -4,12 +4,16 @@ class Program
 {
     static void Main()
     {
-        Console.Write("Enter a number: ");
-        int number = int.Parse(Console.ReadLine());
+        Console.Write("Enter a string: ");
+        string input = Console.ReadLine();
 
-        if (number % 2 == 0)
+        string reversed = "";
+        for (int i = input.Length - 1; i >= 0; i--)
         {
-            Console.WriteLine("The number is Even");
+            reversed += input[i];
         }
+
+        if (input.Equals(reversed, StringComparison.OrdinalIgnoreCase))
+            Console.WriteLine("Palindrome");
     }
 }
