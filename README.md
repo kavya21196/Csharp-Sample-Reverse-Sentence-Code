@@ -1,2 +1,2 @@
-# Csharp-Sample-Reverse-Sentence-Code
+# Csharp-Sample-Code
 Sample C# program to reverse a sentence
