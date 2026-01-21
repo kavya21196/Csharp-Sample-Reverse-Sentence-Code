@@ -1,24 +1,29 @@
-def is_palindrome(value: str) -> bool:
-    cleaned = value.lower()
-    return cleaned == cleaned[::-1]
+using Xunit;
+using PalindromeApp;
 
+namespace PalindromeApp.Tests
+{
+    public class PalindromeTests
+    {
+        [Fact(DisplayName = "PAL-TC-11: Empty string is palindrome")]
+        public void Empty_String_Is_Palindrome()
+        {
+            var result = PalindromeChecker.IsPalindrome("");
+            Assert.True(result);
+        }
 
-def test_empty_string_palindrome():
-    """
-    PAL-TC-11: Empty string is considered a palindrome
-    """
-    assert is_palindrome("") is True
+        [Fact(DisplayName = "PAL-TC-12: Single character palindrome")]
+        public void Single_Character_Is_Palindrome()
+        {
+            var result = PalindromeChecker.IsPalindrome("a");
+            Assert.True(result);
+        }
 
-
-def test_single_character_palindrome():
-    """
-    PAL-TC-12: Single character palindrome
-    """
-    assert is_palindrome("a") is True
-
-
-def test_two_different_characters():
-    """
-    PAL-TC-13: Two different characters
-    """
-    assert is_palindrome("ab") is False
+        [Fact(DisplayName = "PAL-TC-13: Two different characters")]
+        public void Two_Different_Characters_Not_Palindrome()
+        {
+            var result = PalindromeChecker.IsPalindrome("ab");
+            Assert.False(result);
+        }
+    }
+}
