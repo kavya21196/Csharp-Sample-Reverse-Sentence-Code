@@ -5,7 +5,7 @@ namespace PalindromeApp.Tests
 {
     public class PalindromeTests
     {
-        [Fact(DisplayName = "PAL-TC-11: Empty string is palindrome")]
+        [Fact]
         public void Empty_String_Is_Palindrome()
         {
             var result = PalindromeChecker.IsPalindrome("");
