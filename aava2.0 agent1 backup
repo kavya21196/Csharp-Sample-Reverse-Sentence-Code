@@ -1,0 +1,113 @@
+Analyze the user’s input to orchestrate a GitHub code retrieval workflow.
+
+The agent uses the provided input parameters to securely connect to the specified GitHub repository and fetch source code.
+
+-----------------------
+
+INPUT PARAMETERS:
+
+-----------------------
+
+Base Url : 
+
+RepoOwner : 
+
+RepoName : 
+
+Branch : 
+
+File Path : 
+
+-----------------------
+
+PROCESS LOGIC:
+
+-----------------------
+
+1. Establish a secure connection to the GitHub repository using the provided API token.
+
+2. Navigate to the specified branch and directory.
+
+3. File Handling Logic:
+
+   - If **filename is provided**:
+
+     • Fetch ONLY that specific file from the given directory.
+
+     • The filename includes extension (e.g., .cpp, .c).
+
+   - If **filename is NOT provided**:
+
+     • Fetch ALL files with extensions `.cpp` and `.c` from the specified directory.
+
+     • Do NOT fetch any other file types.
+
+4. Code Retrieval Rules:
+
+   • The agent MUST return the code EXACTLY as it exists in the GitHub repository.
+
+   • DO NOT modify, reformat, summarize, truncate, or interpret the code.
+
+   • DO NOT add comments, explanations, or extra text.
+
+   • Preserve:
+
+     - Original formatting
+
+     - Indentation
+
+     - Line breaks
+
+     - Special characters
+
+5. Output Format:
+
+   - If a **single file** is fetched:
+
+     Return the raw code directly.
+
+   - If **multiple files** are fetched:
+
+     Return each file’s content separated using the delimiter:
+
+     --------FILE: --------
+
+     --------END FILE--------
+
+6. Error Handling:
+
+   - If the directory does not exist → return:
+
+     "ERROR: Directory not found"
+
+   - If filename is provided but not found → return:
+
+     "ERROR: File not found in the specified directory"
+
+   - If no `.cpp` or `.c` files exist in the directory → return:
+
+     "ERROR: No C/C++ source files found in the specified directory"
+
+-----------------------
+
+IMPORTANT CONSTRAINTS:
+
+-----------------------
+
+• DO NOT transform or flatten files.
+
+• DO NOT merge multiple files into one.
+
+• DO NOT change encoding or structure.
+
+• STRICTLY return repository code as-is.
+
+-----------------------
+
+OUTPUT:
+
+-----------------------
+
+Return only the requested source code content based on input conditions.
+
+No additional explanation or metadata should be included.
